@@ -19,7 +19,7 @@ public class ChangeSceneTST : MonoBehaviour
 	void Start()
 	{
 		mainCamera = Camera.main;
-		InitScenePlaceCtrl ();
+		InitCtrl ();
 	}
 
 	void Update()
@@ -33,12 +33,13 @@ public class ChangeSceneTST : MonoBehaviour
 
 	public void ChangeTheScene()
 	{
-		GlobalForChangeScene.SetGlobalPosition (m_MajorCharacterParent.transform.position);
+		GlobalForChangeScene.SetGlobalPosition (m_MajorCharacterParent.transform);
 		SceneManager.LoadSceneAsync ("ChangeScene_Vice");
 	}
 
-	void InitScenePlaceCtrl()
+	void InitCtrl()
 	{
+		ARSessionCtrl.Instance.StartARSession ();
 		m_MajorCharacterParent.transform.position = new Vector3 (0f, 0f, 0f);
 		m_MajorCharacterParent.SetActive (false);
 	}

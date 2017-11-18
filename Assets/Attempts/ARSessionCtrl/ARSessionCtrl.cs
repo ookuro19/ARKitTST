@@ -10,9 +10,27 @@ public class ARSessionCtrl : MonoBehaviour
 	private ARKitWorldTrackingSessionConfiguration m_config; //Unity ARKit plugins
 	private UnityARSessionRunOption m_RunOption; //Unity ARKit plugins
 
+	private static ARSessionCtrl _instance;
+	public static ARSessionCtrl Instance
+	{
+		get
+		{
+			if (!_instance) {
+				_instance = GameObject.FindObjectOfType (typeof(ARSessionCtrl)) as ARSessionCtrl;
+				if(!_instance)
+				{
+					GameObject am = new GameObject ("ARSessionCtrl");
+					_instance = am.AddComponent (typeof(ARSessionCtrl)) as ARSessionCtrl;
+				}
+			}
+			return _instance;
+		}
+	}
+
 	void Start()
 	{
 		m_Session = UnityARSessionNativeInterface.GetARSessionNativeInterface();
+
 	}
 
 	/// <summary>
@@ -35,7 +53,7 @@ public class ARSessionCtrl : MonoBehaviour
 	/// Change config.planeDetection from 'Horizontal' to 'one'None'
 	/// Change config.getPointCloudData form 'true' to 'false'
 	/// </summary>
-	public void StopARSession()
+	public void StopAndResetARSession()
 	{
 		#if !UNITY_EDITOR
 		m_config.alignment = UnityARAlignment.UnityARAlignmentGravityAndHeading;
@@ -50,7 +68,7 @@ public class ARSessionCtrl : MonoBehaviour
 	/// <summary>
 	/// Stop the AR session and remove the exist anchors.
 	/// </summary>
-	public void RemoveExistAnchor()
+	public void StopARSessionRemoveAnchor()
 	{
 		#if !UNITY_EDITOR
 		m_config.alignment = UnityARAlignment.UnityARAlignmentGravityAndHeading;

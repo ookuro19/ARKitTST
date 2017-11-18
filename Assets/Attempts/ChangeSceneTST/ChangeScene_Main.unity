@@ -767,6 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1837677029}
   - component: {fileID: 1837677028}
+  - component: {fileID: 1837677030}
   m_Layer: 0
   m_Name: GameCtrl
   m_TagString: Untagged
@@ -799,6 +800,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1837677030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837677027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5763a615dd753410bbe4294f4ccfb2bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2132601113
 GameObject:
   m_ObjectHideFlags: 0
